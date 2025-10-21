@@ -47,7 +47,7 @@
       inset 0 0 0 6px #00000040,
       0 40px 120px #000000aa;
     transform: rotateX(12deg);
-    overflow:hidden;
+    overflow:visible;
   }
 
   /* Spots */
@@ -102,7 +102,7 @@
   .card.face{ transform: rotateY(-10deg); }
   /* Hover peek (Stretch) — player cards lift slightly */
   .spot.player .card:hover{
-    transform: translateY(-8px) rotateY(-6deg);
+    transform: translateY(-8px) rotateY(30deg);
   }
 
   .rank{
@@ -220,7 +220,9 @@
 
   /* Hand zones for placed cards */
   .hand{
-    position:absolute; inset:0; pointer-events:none;
+    position:absolute; 
+	inset:0; 
+	pointer-events:none;
   }
   .hand .card{
     pointer-events:auto; /* enable hover peek on player cards */
@@ -389,11 +391,11 @@ function deal(){
   const fromY = deckRect.top  - tableRect.top  + 40;
 
   const dealerRect = document.querySelector('.spot.dealer').getBoundingClientRect();
-  const playerRect = document.querySelector('.spot.player').getBoundingClientRect();
-  const toDealerX = dealerRect.left - tableRect.left + dealerRect.width/2 - 40;
-  const toDealerY = dealerRect.top  - tableRect.top  + 18;
+  const playerRect = document.querySelector('#playerHand').getBoundingClientRect();
+  const toDealerX = dealerRect.left - tableRect.left + dealerRect.width/2 - 490;
+  const toDealerY = dealerRect.top  - tableRect.top  - 45;
   const toPlayerX = playerRect.left - tableRect.left + playerRect.width/2 - 40;
-  const toPlayerY = playerRect.top  - tableRect.top  + 18;
+  const toPlayerY = playerRect.top  - tableRect.top  + 5;
 
   // Sequence: P1, D, P1, D (two each)
   const sequence = [
